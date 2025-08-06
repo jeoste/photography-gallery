@@ -1,6 +1,6 @@
 # Photography Blog 📸
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ECarry/photography-website)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jeoste/photography-website)
 
 A modern, open-source photography blog platform built with the latest web technologies. Share your photography journey with style and efficiency.
 
@@ -18,18 +18,18 @@ A modern, open-source photography blog platform built with the latest web techno
 
 ## 📸 Screenshots
 
-<img src="https://github.com/ECarry/photography-website/blob/main/docs/screen/home.png?raw=true" alt="page">
-<img src="https://github.com/ECarry/photography-website/blob/main/docs/screen/travel.png?raw=true" alt="page">
-<img src="https://github.com/ECarry/photography-website/blob/main/docs/screen/discover.png?raw=true" alt="page">
-<img src="https://github.com/ECarry/photography-website/blob/main/docs/screen/about.png?raw=true" alt="page">
-<img src="https://github.com/ECarry/photography-website/blob/main/docs/screen/photograph.png?raw=true" alt="page">
+<img src="https://github.com/jeoste/photography-website/blob/main/docs/screen/home.png?raw=true" alt="page">
+<img src="https://github.com/jeoste/photography-website/blob/main/docs/screen/travel.png?raw=true" alt="page">
+<img src="https://github.com/jeoste/photography-website/blob/main/docs/screen/discover.png?raw=true" alt="page">
+<img src="https://github.com/jeoste/photography-website/blob/main/docs/screen/about.png?raw=true" alt="page">
+<img src="https://github.com/jeoste/photography-website/blob/main/docs/screen/photograph.png?raw=true" alt="page">
 
 ## 🌈 Support Theme
 
 - 🌈 Dark
 - 🌈 Light
 
-<img src="https://github.com/ECarry/photography-website/blob/main/screen/theme.png?raw=true" alt="page">
+<img src="https://github.com/jeoste/photography-website/blob/main/screen/theme.png?raw=true" alt="page">
 
 ## 🛠️ Tech Stack
 
@@ -79,6 +79,57 @@ NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=
 ```
 
 Replace `your-domain.com` with your actual domain name. This is required for Cloudflare Image Optimization to work correctly.
+
+## 🚀 Deployment
+
+### Automatic Deployment with GitHub Actions
+
+This project is configured for automatic deployment to Vercel when you push to the `main` or `master` branch.
+
+#### Setup Steps:
+
+1. **Connect your repository to Vercel:**
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Click "New Project"
+   - Import your GitHub repository
+   - Configure your environment variables
+
+2. **Set up GitHub Secrets:**
+   Go to your GitHub repository → Settings → Secrets and variables → Actions, and add:
+   ```
+   VERCEL_TOKEN=your_vercel_token
+   VERCEL_ORG_ID=your_org_id
+   VERCEL_PROJECT_ID=your_project_id
+   ```
+
+3. **Get Vercel credentials:**
+   ```bash
+   # Install Vercel CLI
+   npm i -g vercel
+   
+   # Login to Vercel
+   vercel login
+   
+   # Get your project info
+   vercel link
+   ```
+
+4. **Environment Variables for Production:**
+   Add these to your Vercel project settings:
+   ```
+   DATABASE_URL=your_production_database_url
+   BETTER_AUTH_SECRET=your_auth_secret
+   BETTER_AUTH_URL=https://your-domain.vercel.app
+   NEXT_PUBLIC_APP_URL=https://your-domain.vercel.app
+   CLOUDFLARE_R2_ENDPOINT=your_r2_endpoint
+   CLOUDFLARE_R2_ACCESS_KEY_ID=your_r2_access_key
+   CLOUDFLARE_R2_SECRET_ACCESS_KEY=your_r2_secret_key
+   CLOUDFLARE_R2_BUCKET_NAME=your_bucket_name
+   CLOUDFLARE_R2_PUBLIC_URL=your_r2_public_url
+   NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your_mapbox_token
+   ```
+
+### Manual Deployment
 
 ### Installation
 
@@ -144,7 +195,7 @@ If you find this project helpful, please give it a ⭐️ on GitHub!
 
 ## ⭐️ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ECarry/photography-website&type=Date)](https://star-history.com/#ECarry/photography-website&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=jeoste/photography-website&type=Date)](https://star-history.com/#jeoste/photography-website&Date)
 
 ## 📝 Changelog
 

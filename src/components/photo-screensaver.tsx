@@ -20,7 +20,7 @@ const ANIMATION_DURATION = 1.8; // 1.8 seconds for each flip
 
 /**
  * PhotoScreensaver component displays a photo screensaver like mac Album Artwork.
- * @preview - https://p.ecarry.me/screensaver
+ * @preview - https://p.jeoste.me/screensaver
  *
  * @param {Array<{ id: string; url: string; blurData: string }>} photos - The photos to display.
  * @param {string} className - Optional className for the component.

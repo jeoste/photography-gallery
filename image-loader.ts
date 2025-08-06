@@ -23,7 +23,12 @@ export default function cloudflareLoader({
   }
   const paramsString = params.join(",");
 
-  return `https://votre-domaine.vercel.app/cdn-cgi/image/${paramsString}/${normalizeSrc(
+  // Use environment variable for domain or fallback to localhost
+  const domain = process.env.NEXT_PUBLIC_APP_URL || process.env.VERCEL_URL || 'localhost:3000';
+  const protocol = domain.includes('localhost') ? 'http' : 'https';
+  const baseUrl = `${protocol}://${domain}`;
+  
+  return `${baseUrl}/cdn-cgi/image/${paramsString}/${normalizeSrc(
     src
   )}`;
 }

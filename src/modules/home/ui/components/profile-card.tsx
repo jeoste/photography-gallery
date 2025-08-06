@@ -51,7 +51,7 @@ const ProfileCard = () => {
           href="https://instagram.com/ekkooooooooooo0o0"
         />
 
-        <ContactCard title="GitHub" href="https://github.com/ecarry" />
+        <ContactCard title="GitHub" href="https://github.com/jeoste" />
 
         <ContactCard
           title="Xiaohongshu"

@@ -13,7 +13,7 @@ const Footer = () => {
 
         {/* NAME  */}
         <div className="flex flex-col items-center lg:items-start gap-[2px]">
-          <h1 className="text-2xl">ECarry</h1>
+          <h1 className="text-2xl">Jeoste</h1>
           <p className="text-sm opacity-60">Photographer</p>
         </div>
       </div>
@@ -52,12 +52,12 @@ const Footer = () => {
           </a>
           <span className="opacity-60">. Powered by </span>
           <a
-            href="https://github.com/ecarry"
+                          href="https://github.com/jeoste"
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-2"
           >
-            ECarry
+            Jeoste
           </a>
         </p>
       </div>
