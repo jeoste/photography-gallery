@@ -55,7 +55,7 @@ export class CloudflareR2Client {
   }
 
   /**
-   *  XMLHttpRequest upload with progress
+   *  Upload using both fetch and XMLHttpRequest as fallback
    * @param file the file to be uploaded
    * @param uploadUrl the upload url
    * @param onProgress the progress callback
@@ -65,10 +65,48 @@ export class CloudflareR2Client {
     uploadUrl: string,
     onProgress?: (progress: number) => void
   ): Promise<void> {
+    // Vérification de l'URL d'upload
+    if (!uploadUrl.includes('r2.cloudflarestorage.com')) {
+      throw new UploadError("Invalid upload URL - not pointing to Cloudflare R2");
+    }
+
+    // Essayer d'abord avec fetch
+    try {
+      await this.uploadWithFetch(file, uploadUrl, onProgress);
+      return;
+    } catch (fetchError) {
+      // Fallback avec XMLHttpRequest
+      await this.uploadWithXHR(file, uploadUrl, onProgress);
+    }
+  }
+
+  private async uploadWithFetch(
+    file: File,
+    uploadUrl: string,
+    onProgress?: (progress: number) => void
+  ): Promise<void> {
+    const response = await fetch(uploadUrl, {
+      method: 'PUT',
+      body: file,
+    });
+
+    const responseText = await response.text();
+
+    if (response.ok) {
+      onProgress?.(100);
+    } else {
+      throw new UploadError(`Fetch upload failed with status ${response.status}: ${responseText}`);
+    }
+  }
+
+  private async uploadWithXHR(
+    file: File,
+    uploadUrl: string,
+    onProgress?: (progress: number) => void
+  ): Promise<void> {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
-      // upload progress
       xhr.upload.addEventListener("progress", (event) => {
         if (event.lengthComputable) {
           const progress = Math.round((event.loaded / event.total) * 100);
@@ -76,33 +114,24 @@ export class CloudflareR2Client {
         }
       });
 
-      // complete
       xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
           resolve();
         } else {
-          reject(
-            new UploadError(`Upload failed with status ${xhr.status}`, {
-              status: xhr.status,
-              response: xhr.response,
-            })
-          );
+          reject(new UploadError(`XHR upload failed with status ${xhr.status}: ${xhr.responseText}`));
         }
       };
 
-      // error
       xhr.onerror = () => {
-        reject(new UploadError("Network error during upload"));
+        reject(new UploadError("XHR network error during upload"));
       };
 
       xhr.ontimeout = () => {
-        reject(new UploadError("Upload timed out"));
+        reject(new UploadError("XHR upload timed out"));
       };
 
-      // timeout
-      xhr.timeout = 30000;
+      xhr.timeout = 60000; // 60 secondes
 
-      // send request
       xhr.open("PUT", uploadUrl);
       xhr.send(file);
     });

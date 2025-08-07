@@ -53,6 +53,7 @@ export const cloudflareR2Router = createTRPCRouter({
         const signedUrl = await getSignedUrl(s3Client, command, {
           expiresIn: 3600,
         });
+        
         const publicUrl = getPublicUrl(filename, folder);
 
         return {

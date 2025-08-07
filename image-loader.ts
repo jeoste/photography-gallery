@@ -14,9 +14,9 @@ export default function cloudflareLoader({
   if (src.startsWith("/")) {
     return src;
   }
-  // if (process.env.NODE_ENV === "development") {
-  //   return src;
-  // }
+    if (process.env.NODE_ENV === "development") {
+    return src;
+  }
   const params = [`width=${width}`];
   if (quality) {
     params.push(`quality=${quality}`);

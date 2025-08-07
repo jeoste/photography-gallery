@@ -50,15 +50,6 @@ const Footer = () => {
           >
             Pawel Gola
           </a>
-          <span className="opacity-60">. Powered by </span>
-          <a
-                          href="https://github.com/jeoste"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline underline-offset-2"
-          >
-            Jeoste
-          </a>
         </p>
       </div>
     </div>
