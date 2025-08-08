@@ -18,7 +18,7 @@ const ProfileCard = () => {
             {/* AVATAR  */}
             <Avatar className="size-[60px]">
               <AvatarImage
-                src="https://avatars.githubusercontent.com/u/11783612?v=4"
+                src="https://jeoste.github.io/assets/profile.jpg"
                 alt="Avatar"
               />
               <AvatarFallback>EC</AvatarFallback>

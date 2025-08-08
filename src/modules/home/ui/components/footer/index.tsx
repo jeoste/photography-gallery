@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="flex flex-col lg:flex-row gap-4 items-center">
         {/* AVATAR  */}
         <Avatar className="size-[60px]">
-          <AvatarImage src="https://avatars.githubusercontent.com/u/11783612?v=4" />
+          <AvatarImage src="https://jeoste.github.io/assets/profile.jpg" />
           <AvatarFallback>JS</AvatarFallback>
         </Avatar>
 
