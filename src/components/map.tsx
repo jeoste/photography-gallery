@@ -138,13 +138,11 @@ const Mapbox = ({
   if (!MAPBOX_TOKEN) {
     if (process.env.NODE_ENV !== "production") {
       // eslint-disable-next-line no-console
-      console.warn(
-        "NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN manquant: la carte ne peut pas s'afficher."
-      );
+      console.warn("NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN missing: the map cannot be displayed.");
     }
     return (
       <div className="flex h-full w-full items-center justify-center rounded-md border border-dashed border-border p-6 text-sm text-muted-foreground">
-        Configure NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN dans vos variables d'environnement.
+        Set NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN in your environment variables.
       </div>
     );
   }
@@ -161,15 +159,14 @@ const Mapbox = ({
       onClick={onClick}
       onError={(e) => {
         setMapError(
-          (e as { error?: Error }).error?.message ||
-            "Erreur de chargement de la carte"
+          (e as { error?: Error }).error?.message || "Map failed to load"
         );
       }}
     >
       {mapError && (
         <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center p-4">
           <div className="pointer-events-auto max-w-md rounded-md border border-border bg-background/80 p-3 text-center text-sm text-muted-foreground shadow">
-            {mapError}. Vérifiez votre token et le style Mapbox (accès public ou styles par défaut).
+            {mapError}. Check your token and Mapbox style (public access or default styles).
           </div>
         </div>
       )}

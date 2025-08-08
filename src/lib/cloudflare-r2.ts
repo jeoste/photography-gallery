@@ -74,7 +74,7 @@ export class CloudflareR2Client {
     try {
       await this.uploadWithFetch(file, uploadUrl, onProgress);
       return;
-    } catch (fetchError) {
+    } catch {
       // Fallback avec XMLHttpRequest
       await this.uploadWithXHR(file, uploadUrl, onProgress);
     }
