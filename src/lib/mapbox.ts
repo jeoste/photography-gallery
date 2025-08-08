@@ -39,7 +39,7 @@ export async function getLocationFromCoordinates(
 
   try {
     const response = await fetch(
-      `${MAPBOX_API}?longitude=${longitude}&latitude=${latitude}&language=zh&access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN}`
+      `${MAPBOX_API}?longitude=${longitude}&latitude=${latitude}&language=fr&access_token=${process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}`
     );
 
     if (!response.ok) {

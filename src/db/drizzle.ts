@@ -4,6 +4,7 @@ import * as posts from "./schema/posts";
 
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
+import { env } from "@/env";
 
 const schema = {
   ...users,
@@ -11,5 +12,5 @@ const schema = {
   ...posts,
 };
 
-const sql = neon(process.env.DATABASE_URL!);
+const sql = neon(env.server.DATABASE_URL);
 export const db = drizzle(sql, { schema });

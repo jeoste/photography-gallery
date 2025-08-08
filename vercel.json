@@ -37,10 +37,5 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/cdn-cgi/image/(.*)",
-      "destination": "https://jeoste.vercel.app/cdn-cgi/image/$1"
-    }
-  ]
+  "rewrites": []
 }

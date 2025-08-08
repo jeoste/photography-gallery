@@ -1,14 +1,16 @@
 import { S3Client } from "@aws-sdk/client-s3";
+import { env } from "@/env";
 
 // Initialize S3 client with Cloudflare R2 configuration
 export const s3Client = new S3Client({
   region: "auto",
-  endpoint: process.env.CLOUDFLARE_R2_ENDPOINT,
+  endpoint: env.server.CLOUDFLARE_R2_ENDPOINT,
   credentials: {
-    accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY!,
+    accessKeyId: env.server.CLOUDFLARE_R2_ACCESS_KEY_ID,
+    secretAccessKey: env.server.CLOUDFLARE_R2_SECRET_ACCESS_KEY,
   },
-  forcePathStyle: false, // Important pour Cloudflare R2
+  // R2 fonctionne sans path-style dans la majorité des cas, ajustable si besoin
+  forcePathStyle: false,
 });
 
 

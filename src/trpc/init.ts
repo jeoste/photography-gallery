@@ -1,4 +1,5 @@
 import { initTRPC } from "@trpc/server";
+import { TRPCError } from "@trpc/server";
 import { cache } from "react";
 import superjson from "superjson";
 import { auth } from "@/modules/auth/lib/auth";
@@ -44,7 +45,7 @@ export const protectedProcedure = t.procedure.use(async function isAuthed(
   const { ctx } = opts;
 
   if (!ctx.userId) {
-    throw new Error("Not authenticated");
+    throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 
   return opts.next({

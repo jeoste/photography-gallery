@@ -18,7 +18,7 @@ const ProfileCard = () => {
             {/* AVATAR  */}
             <Avatar className="size-[60px]">
               <AvatarImage
-                src="https://avatars.githubusercontent.com/u/16572906?s=400&u=a304af70d12572524d540553425d78ff4d1a101a&v=4"
+                src="https://avatars.githubusercontent.com/u/11783612?v=4"
                 alt="Avatar"
               />
               <AvatarFallback>EC</AvatarFallback>
@@ -27,15 +27,13 @@ const ProfileCard = () => {
             {/* NAME  */}
             <div className="flex flex-col gap-[2px]">
               <h1 className="text-lg">jeoste</h1>
-              <p className="text-sm text-text-muted">Photographer</p>
+              <p className="text-sm text-text-muted">Data Consultant & Photographer Enthusiast</p>
             </div>
           </div>
 
           <div className="lg:mt-4 xl:mt-0">
             <p className="text-text-muted text-[15px]">
-              I&apos;m Jeoffrey Stéphan (jeoste), a photographer dedicated to capturing authentic
-              moments and telling stories through creative and emotional
-              imagery, wherever my journey takes me.
+              I&apos;m Jeoffrey Stéphan (jeoste), a data consultant and a passionate photographer. Catching the moment more than the picture is what I like.
             </p>
           </div>
 
@@ -48,19 +46,19 @@ const ProfileCard = () => {
       <div className="col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1 flex flex-col justify-between gap-3">
         <ContactCard
           title="Instagram"
-          href="https://instagram.com/ekkooooooooooo0o0"
+          href="https://instagram.com/jepeuli_28"
         />
 
         <ContactCard title="GitHub" href="https://github.com/jeoste" />
 
         <ContactCard
-          title="Xiaohongshu"
-          href="https://www.xiaohongshu.com/user/profile/66c84ba2000000001b01b3f1"
+          title="Website"
+          href="https://jeoste.github.io/"
         />
 
         <ContactCard
           title="Contact me"
-          href="mailto:lianshiliang93@gmail.com"
+          href="mailto:jeoffrey.stephan@gmail.com"
           className="bg-primary text-white hover:text-black dark:text-black dark:hover:text-white"
         />
       </div>

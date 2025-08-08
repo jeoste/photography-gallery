@@ -6,9 +6,8 @@ export const Introduction = () => (
       <h1 className="text-4xl">Travel</h1>
       <div className="flex flex-col gap-4 font-light">
         <p>
-          Exploring the world one step at a time, capturing life through street
-          photography and city walks. From bustling urban corners to hidden
-          alleyways, every journey tells a unique story through the lens.
+          Exploring countries and cities, feeling the culture, and capturing, little by little, the moments.
+          From cities to countryside, the most crowded places to the most hidden ones.
         </p>
       </div>
     </div>

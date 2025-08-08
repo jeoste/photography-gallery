@@ -43,9 +43,14 @@ export interface MapboxProps {
   showGeocoder?: boolean;
 }
 
+// Resolve styles from env with safe fallbacks to public Mapbox styles
 const MAP_STYLES = {
-      light: "mapbox://styles/jeoste/cldmhu6tr000001n33ujbxf7j",
-    dark: "mapbox://styles/jeoste/clp8hcmd300km01qx78rt0xaw",
+  light:
+    process.env.NEXT_PUBLIC_MAPBOX_STYLE_LIGHT ||
+    "mapbox://styles/mapbox/streets-v12",
+  dark:
+    process.env.NEXT_PUBLIC_MAPBOX_STYLE_DARK ||
+    "mapbox://styles/mapbox/dark-v11",
 } as const;
 
 const Mapbox = ({
@@ -64,6 +69,8 @@ const Mapbox = ({
 }: MapboxProps) => {
   const mapRef = useRef<MapRef>(null);
   const { theme } = useTheme();
+  const [mapError, setMapError] = useState<string | null>(null);
+  const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
   const [popupInfo, setPopupInfo] = useState<{
     id: string;
     longitude: number;
@@ -127,17 +134,45 @@ const Mapbox = ({
     });
   }, []);
 
+  // Early guard when token is missing to avoid a blank map
+  if (!MAPBOX_TOKEN) {
+    if (process.env.NODE_ENV !== "production") {
+      // eslint-disable-next-line no-console
+      console.warn(
+        "NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN manquant: la carte ne peut pas s'afficher."
+      );
+    }
+    return (
+      <div className="flex h-full w-full items-center justify-center rounded-md border border-dashed border-border p-6 text-sm text-muted-foreground">
+        Configure NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN dans vos variables d'environnement.
+      </div>
+    );
+  }
+
   return (
     <Map
       id={id}
       ref={mapRef}
-      mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN}
+      mapboxAccessToken={MAPBOX_TOKEN}
       initialViewState={initialViewState}
       style={{ width: "100%", height: "100%" }}
       mapStyle={MAP_STYLES[theme === "dark" ? "dark" : "light"]}
       interactiveLayerIds={geoJsonData ? ["data"] : undefined}
       onClick={onClick}
+      onError={(e) => {
+        setMapError(
+          (e as { error?: Error }).error?.message ||
+            "Erreur de chargement de la carte"
+        );
+      }}
     >
+      {mapError && (
+        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center p-4">
+          <div className="pointer-events-auto max-w-md rounded-md border border-border bg-background/80 p-3 text-center text-sm text-muted-foreground shadow">
+            {mapError}. Vérifiez votre token et le style Mapbox (accès public ou styles par défaut).
+          </div>
+        </div>
+      )}
       {/* Navigation Controls */}
       <NavigationControl position="bottom-left" />
       <GeolocateControl

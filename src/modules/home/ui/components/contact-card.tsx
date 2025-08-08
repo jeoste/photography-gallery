@@ -6,15 +6,15 @@ import {
   PiInstagramLogo,
   PiGithubLogo,
   PiXLogo,
+  PiGlobe,
 } from "react-icons/pi";
-import { SiXiaohongshu } from "react-icons/si";
 
 // icon map
 const iconMap = {
   Instagram: <PiInstagramLogo size={18} />,
   GitHub: <PiGithubLogo size={18} />,
   X: <PiXLogo size={18} />,
-  Xiaohongshu: <SiXiaohongshu size={18} />,
+  Website: <PiGlobe size={18} />,
   "Contact me": <MdEmail size={18} />,
 };
 
