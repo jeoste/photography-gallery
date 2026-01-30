@@ -94,7 +94,7 @@ export const PostSectionSuspense = ({ slug }: Props) => {
         {/* CONTACT CARD  */}
         <ContactCard
           title="Contact me"
-          href="mailto:lianshiliang93@gmail.com"
+          href="mailto:jeoste@atomicmail.io"
           className="bg-primary text-white hover:text-black dark:text-black dark:hover:text-white h-14"
         />
 

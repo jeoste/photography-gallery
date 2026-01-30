@@ -33,7 +33,7 @@ const ProfileCard = () => {
 
           <div className="lg:mt-4 xl:mt-0">
             <p className="text-text-muted text-[15px]">
-              I&apos;m Jeoffrey Stéphan (jeoste), a data consultant and a passionate photographer. Catching the moment more than the picture is what I like.
+              I&apos;m Jeoffrey 'jeoste', a data consultant and a passionate photographer. Catching the moment more than the picture is what I like.
             </p>
           </div>
 
@@ -53,12 +53,12 @@ const ProfileCard = () => {
 
         <ContactCard
           title="Website"
-          href="https://jeoste.github.io/"
+          href="https://jeoste.com"
         />
 
         <ContactCard
           title="Contact me"
-          href="mailto:jeoffrey.stephan@gmail.com"
+          href="mailto:jeoste"
           className="bg-primary text-white hover:text-black dark:text-black dark:hover:text-white"
         />
       </div>
